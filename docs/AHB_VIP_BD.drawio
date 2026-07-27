@@ -1,0 +1,489 @@
+<mxfile host="Electron" agent="claude" pages="3">
+  <diagram id="pgA" name="1-UVM Hiyerarsi">
+    <mxGraphModel dx="2416" dy="2813" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="text;html=1;fontSize=22;fontStyle=1;align=center;verticalAlign=middle;fontColor=#1F2937;" value="AHB-Lite VIP — UVM Hiyerarsi" vertex="1">
+          <mxGeometry height="34" width="560" x="342" y="-1400" as="geometry" />
+        </mxCell>
+        <mxCell id="tb" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F9FAFB;strokeColor=#4B5563;strokeWidth=2;dashed=1;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="1300" width="1120" x="62" y="-1320" as="geometry" />
+        </mxCell>
+        <mxCell id="tbl" parent="1" style="text;html=1;fontSize=15;fontStyle=1;align=left;fontColor=#374151;" value="module tb_top" vertex="1">
+          <mxGeometry height="24" width="420" x="72" y="-1310" as="geometry" />
+        </mxCell>
+        <mxCell id="clk" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#6B7280;fontSize=11;fontFamily=Courier New;" value="HCLK  10ns periyot&#xa;HRESETn  @25ns release" vertex="1">
+          <mxGeometry height="48" width="175" x="84" y="-1250" as="geometry" />
+        </mxCell>
+        <mxCell id="cfg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#6B7280;fontSize=10;fontFamily=Courier New;" value="uvm_config_db#(virtual ahb_if)&#xa;::set(null, &quot;*&quot;, &quot;vif&quot;, intf)" vertex="1">
+          <mxGeometry height="48" width="250" x="274" y="-1250" as="geometry" />
+        </mxCell>
+        <mxCell id="rt" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#6B7280;fontSize=11;fontFamily=Courier New;" value="run_test()&#xa;+UVM_TESTNAME" vertex="1">
+          <mxGeometry height="48" width="155" x="539" y="-1250" as="geometry" />
+        </mxCell>
+        <mxCell id="dv" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#6B7280;fontSize=10;fontFamily=Courier New;" value="$dumpfile / $dumpvars&#xa;$timeformat(-9,0,&quot; ns&quot;,10)" vertex="1">
+          <mxGeometry height="48" width="220" x="709" y="-1250" as="geometry" />
+        </mxCell>
+        <mxCell id="hl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E5E7EB;strokeColor=#6B7280;fontSize=10;fontFamily=Courier New;" value="assign intf.HREADY&#xa;  = hreadyout_w" vertex="1">
+          <mxGeometry height="48" width="175" x="940" y="-1250" as="geometry" />
+        </mxCell>
+        <mxCell id="tst" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="690" width="1050" x="97" y="-1125" as="geometry" />
+        </mxCell>
+        <mxCell id="tstl" parent="1" style="text;html=1;fontSize=14;fontStyle=1;align=left;fontColor=#92400E;" value="uvm_test_top : ahb_base_test" vertex="1">
+          <mxGeometry height="22" width="340" x="112" y="-1118" as="geometry" />
+        </mxCell>
+        <mxCell id="tstn" parent="1" style="text;html=1;fontSize=10;align=left;fontColor=#92400E;fontFamily=Courier New;" value="build_phase              : env create&#xa;end_of_elaboration_phase : uvm_top.print_topology()&#xa;final_phase              : AHB_RESULT ... PASS/FAIL  -&gt;  ahb_results.log" vertex="1">
+          <mxGeometry height="46" width="470" x="502" y="-1120" as="geometry" />
+        </mxCell>
+        <mxCell id="drv6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#D97706;dashed=1;fontSize=10;align=left;spacingLeft=8;fontFamily=Courier New;" value="Turetilen testler (run_phase: raise_objection -&gt; seq.start(env.agent.sqr) -&gt; #Xns -&gt; drop_objection)&#xa;ahb_smoke_test    ahb_write_read_test    ahb_random_test    ahb_b2b_test&#xa;ahb_walking_test  ahb_regression_test    ahb_align_error_test  (NEGATIF — FAIL beklenir)" vertex="1">
+          <mxGeometry height="62" width="1020" x="112" y="-1070" as="geometry" />
+        </mxCell>
+        <mxCell id="env" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=2;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="540" width="1010" x="117" y="-992" as="geometry" />
+        </mxCell>
+        <mxCell id="envl" parent="1" style="text;html=1;fontSize=14;fontStyle=1;align=left;fontColor=#1E40AF;" value="env : ahb_env" vertex="1">
+          <mxGeometry height="22" width="220" x="132" y="-985" as="geometry" />
+        </mxCell>
+        <mxCell id="envn" parent="1" style="text;html=1;fontSize=10;align=left;fontColor=#1E40AF;fontFamily=Courier New;" value="connect_phase :  agent.mon.ap.connect(sb.ap_imp)&#xa;                 agent.mon.ap.connect(cov.analysis_export)" vertex="1">
+          <mxGeometry height="32" width="470" x="502" y="-987" as="geometry" />
+        </mxCell>
+        <mxCell id="ag" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#1D4ED8;strokeWidth=2;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="470" width="430" x="137" y="-940" as="geometry" />
+        </mxCell>
+        <mxCell id="agl" parent="1" style="text;html=1;fontSize=13;fontStyle=1;align=left;fontColor=#1E3A8A;" value="agent : ahb_agent   (UVM_ACTIVE)" vertex="1">
+          <mxGeometry height="20" width="330" x="150" y="-933" as="geometry" />
+        </mxCell>
+        <mxCell id="agn" parent="1" style="text;html=1;fontSize=9;align=left;fontColor=#1E3A8A;fontFamily=Courier New;" value="mon  : HER ZAMAN&#xa;sqr/drv : sadece ACTIVE" vertex="1">
+          <mxGeometry height="26" width="160" x="402" y="-933" as="geometry" />
+        </mxCell>
+        <mxCell id="sqr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1D4ED8;strokeWidth=2;fontSize=11;fontFamily=Courier New;" value="sqr : ahb_sequencer&#xa;uvm_sequencer #(ahb_seq_item)&#xa;&#xa;seq_item_export" vertex="1">
+          <mxGeometry height="78" width="275" x="162" y="-898" as="geometry" />
+        </mxCell>
+        <mxCell id="drv" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1D4ED8;strokeWidth=2;fontSize=11;fontFamily=Courier New;" value="drv : ahb_driver&#xa;uvm_driver #(ahb_seq_item)&#xa;&#xa;seq_item_port&#xa;build : config_db get vif&#xa;run   : get_next_item -&gt; drive -&gt; item_done&#xa;AHB PIPELINE MANTIGI BURADA" vertex="1">
+          <mxGeometry height="118" width="275" x="162" y="-765" as="geometry" />
+        </mxCell>
+        <mxCell id="mon" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1D4ED8;strokeWidth=2;fontSize=11;fontFamily=Courier New;" value="mon : ahb_monitor&#xa;uvm_monitor&#xa;&#xa;ap : uvm_analysis_port&#xa;pending  &lt;- pipeline echo&#xa;ONCE KAPAT, SONRA AC" vertex="1">
+          <mxGeometry height="105" width="275" x="162" y="-610" as="geometry" />
+        </mxCell>
+        <mxCell id="sb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#059669;strokeWidth=2;fontSize=11;align=left;spacingLeft=8;fontFamily=Courier New;" value="sb : ahb_scoreboard&#xa;uvm_scoreboard&#xa;&#xa;ap_imp : uvm_analysis_imp&#xa;          #(ahb_seq_item, ahb_scoreboard)&#xa;&#xa;ref_mem[bit[31:0]]  &lt;- golden model&#xa;associative array + .exists()&#xa;&#xa;function void write(t)&#xa;  write -&gt; ref_mem[addr]=wdata&#xa;  read  -&gt; compare / SKIP&#xa;&#xa;report_phase :&#xa;  WRITE READ PASS FAIL SKIP" vertex="1">
+          <mxGeometry height="245" width="300" x="612" y="-910" as="geometry" />
+        </mxCell>
+        <mxCell id="cov" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE7F3;strokeColor=#DB2777;strokeWidth=2;fontSize=11;align=left;spacingLeft=8;fontFamily=Courier New;" value="cov : ahb_coverage&#xa;uvm_subscriber #(ahb_seq_item)&#xa;&#xa;analysis_export  &lt;- hazir uc&#xa;&#xa;covergroup ahb_cg&#xa;  cp_write   (2 bin)&#xa;  cp_addr    (low/mid/high)&#xa;  cp_wr_trans(4 gecis)&#xa;  x_write_addr = cross&#xa;&#xa;write(t) -&gt; ahb_cg.sample()" vertex="1">
+          <mxGeometry height="175" width="300" x="612" y="-645" as="geometry" />
+        </mxCell>
+        <mxCell id="sq" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;dashed=1;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="440" width="178" x="937" y="-910" as="geometry" />
+        </mxCell>
+        <mxCell id="sql" parent="1" style="text;html=1;fontSize=11;fontStyle=1;align=left;fontColor=#5B21B6;" value="Sequences&#xa;(uvm_object)" vertex="1">
+          <mxGeometry height="30" width="160" x="948" y="-904" as="geometry" />
+        </mxCell>
+        <mxCell id="sqli" parent="1" style="text;html=1;fontSize=9;align=left;fontColor=#5B21B6;fontFamily=Courier New;" value="ahb_single_write_seq&#xa;ahb_single_read_seq&#xa;ahb_write_read_seq&#xa;  rand target_addr&#xa;ahb_random_seq&#xa;  rand num_txn [10:50]&#xa;ahb_b2b_seq&#xa;  4 write + 4 read&#xa;ahb_walking_addr_seq&#xa;  16 adres tarama&#xa;ahb_regression_seq&#xa;  NESTED:&#xa;  walk -&gt; b2b -&gt; rnd&#xa;ahb_align_error_seq&#xa;  addr=0x11 (NEGATIF)" vertex="1">
+          <mxGeometry height="240" width="170" x="946" y="-868" as="geometry" />
+        </mxCell>
+        <mxCell id="sqn" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;fontSize=9;fontFamily=Courier New;" value="create&#xa;start_item&#xa;randomize&#xa;finish_item" vertex="1">
+          <mxGeometry height="62" width="152" x="950" y="-610" as="geometry" />
+        </mxCell>
+        <mxCell id="sqn2" parent="1" style="text;html=1;fontSize=9;align=center;fontColor=#7C3AED;fontStyle=2;" value="`uvm_do KULLANILMADI&#xa;acik yazildi" vertex="1">
+          <mxGeometry height="30" width="170" x="946" y="-535" as="geometry" />
+        </mxCell>
+        <mxCell id="itf" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=2;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="208" width="1010" x="117" y="-420" as="geometry" />
+        </mxCell>
+        <mxCell id="itfl" parent="1" style="text;html=1;fontSize=13;fontStyle=1;align=left;fontColor=#5B21B6;" value="interface ahb_if" vertex="1">
+          <mxGeometry height="22" width="700" x="122" y="-420" as="geometry" />
+        </mxCell>
+        <mxCell id="dcb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;fontSize=9;align=left;spacingLeft=6;fontFamily=Courier New;" value="clocking drv_cb @(posedge HCLK)&#xa;default input #1step output #1;&#xa;&#xa;output HSEL HADDR HWRITE HSIZE&#xa;       HBURST HTRANS HWDATA&#xa;input  HRDATA HREADY HRESP&#xa;&#xa;modport DRV" vertex="1">
+          <mxGeometry height="118" width="235" x="134" y="-385" as="geometry" />
+        </mxCell>
+        <mxCell id="mcb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;fontSize=9;align=left;spacingLeft=6;fontFamily=Courier New;" value="clocking mon_cb @(posedge HCLK)&lt;br&gt;default input #1step;&lt;br&gt;&lt;br&gt;input  TUM SINYALLER&lt;br&gt;&lt;br&gt;modport MON" vertex="1">
+          <mxGeometry height="118" width="218" x="384" y="-385" as="geometry" />
+        </mxCell>
+        <mxCell id="sva" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;strokeWidth=2;fontSize=9;align=left;spacingLeft=6;fontFamily=Courier New;" value="SVA — concurrent assertions&#xa;default disable iff (!HRESETn)&#xa;&#xa;a_addr_align    |-&gt;   AKTIF&#xa;a_ctrl_stable   |=&gt;   VACUOUS&#xa;a_no_x          |-&gt;   AKTIF&#xa;a_wdata_no_x    |=&gt;   AKTIF&#xa;a_htrans_legal   -    AKTIF" vertex="1">
+          <mxGeometry height="118" width="245" x="617" y="-385" as="geometry" />
+        </mxCell>
+        <mxCell id="cvp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontSize=9;align=left;spacingLeft=6;fontFamily=Courier New;" value="cover property&lt;br&gt;&lt;br&gt;c_write_txn&lt;br&gt;c_read_txn&amp;nbsp;&lt;br&gt;c_b2b_txn&lt;br&gt;c_idle_gap&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="118" width="240" x="877" y="-385" as="geometry" />
+        </mxCell>
+        <mxCell id="dut" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D1D5DB;strokeColor=#374151;strokeWidth=3;fontSize=12;fontStyle=1;fontFamily=Courier New;" value="DUT : ahb_lite_slave #(DEPTH=16)&#xa;&#xa;mem[0:15]  |  addr_d, wr_en_d  &lt;- PIPELINE REGISTER&#xa;HRDATA = mem[addr_d[5:2]]   |   HREADYOUT = 1   |   HRESP = 0" vertex="1">
+          <mxGeometry height="80" width="1010" x="117" y="-180" as="geometry" />
+        </mxCell>
+        <mxCell id="scope" parent="1" style="text;html=1;fontSize=10;align=center;fontColor=#6B7280;fontStyle=2;" value="KAPSAM DISI :  burst (INCR/WRAP)  |  wait state (HREADY=0)  |  ERROR response  |  multi-slave interconnect  |  RAL  |  virtual sequence  |  pipelined driver" vertex="1">
+          <mxGeometry height="20" width="1010" x="117" y="-70" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="sqr" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#1D4ED8;strokeWidth=2;endArrow=classic;startArrow=classic;" target="drv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1l" parent="1" style="text;html=1;fontSize=9;align=left;fontColor=#1D4ED8;fontFamily=Courier New;" value="seq_item_port &lt;-&gt; seq_item_export&#xa;get_next_item / item_done" vertex="1">
+          <mxGeometry height="28" width="240" x="307" y="-813" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="mon" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#059669;strokeWidth=3;endArrow=classic;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="sb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="mon" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#DB2777;strokeWidth=3;endArrow=classic;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.4;entryDx=0;entryDy=0;" target="cov">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23l" parent="1" style="text;html=1;fontSize=10;align=center;fontColor=#059669;fontStyle=1;fontFamily=Courier New;" value="ap.write(item)&#xa;BROADCAST&#xa;1 yayinci, 2 dinleyici" vertex="1">
+          <mxGeometry height="42" width="160" x="447" y="-650" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="drv" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#7C3AED;strokeWidth=2;endArrow=classic;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" target="dcb">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230.77" y="-630" />
+              <mxPoint x="152" y="-630" />
+              <mxPoint x="152" y="-480" />
+              <mxPoint x="204.54" y="-480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="mon" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#7C3AED;strokeWidth=2;endArrow=classic;exitX=0.85;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="mcb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="itf" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#374151;strokeWidth=3;endArrow=classic;startArrow=classic;exitX=0.35;exitY=1;exitDx=0;exitDy=0;entryX=0.35;entryY=0;entryDx=0;entryDy=0;" target="dut">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="sq" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#7C3AED;strokeWidth=2;endArrow=classic;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.4;entryDx=0;entryDy=0;" target="sqr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7l" parent="1" style="text;html=1;fontSize=9;align=left;fontColor=#7C3AED;fontFamily=Courier New;" value="seq.start(env.agent.sqr)" vertex="1">
+          <mxGeometry height="16" width="150" x="462" y="-886" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="itf" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#9CA3AF;strokeWidth=1;endArrow=classic;dashed=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.15;entryDx=0;entryDy=0;innerLoopWaypoints=1;" target="itf">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1162" y="-368" />
+              <mxPoint x="1162" y="-1168" />
+              <mxPoint x="80" y="-1168" />
+              <mxPoint x="80" y="-388.77" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8l" parent="1" style="text;html=1;fontSize=9;align=left;fontColor=#6B7280;" value="config_db&#xa;KOPRU&#xa;module -&gt; class" vertex="1">
+          <mxGeometry height="40" width="90" x="30" y="-790" as="geometry" />
+        </mxCell>
+        <mxCell id="MAv6pUe6ey37fR-XruMg-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.32;entryY=1.008;entryDx=0;entryDy=0;entryPerimeter=0;" target="env">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="443.9999999999998" y="-430.00000000000045" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pgB" name="2-Veri Akisi">
+    <mxGraphModel dx="1712" dy="1001" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1050" pageHeight="1050" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="text;html=1;fontSize=22;fontStyle=1;align=center;verticalAlign=middle;fontColor=#1F2937;" value="Veri Akisi — Stimulus ve Kontrol Yollari" vertex="1">
+          <mxGeometry height="34" width="560" x="245" y="15" as="geometry" />
+        </mxCell>
+        <mxCell id="sh" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#92400E;" value="STIMULUS  (asagi)" vertex="1">
+          <mxGeometry height="34" width="270" x="110" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;fontSize=11;fontFamily=Courier New;" value="test.run_phase&#xa;raise_objection -&gt; seq.start(sqr)" vertex="1">
+          <mxGeometry height="50" width="272" x="105" y="138" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#7C3AED;fontSize=11;fontFamily=Courier New;" value="sequence.body()&#xa;create -&gt; start_item -&gt; randomize&#xa;-&gt; finish_item" vertex="1">
+          <mxGeometry height="58" width="272" x="105" y="218" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#1D4ED8;fontSize=11;fontFamily=Courier New;" value="ahb_sequencer&#xa;arbitrasyon" vertex="1">
+          <mxGeometry height="44" width="272" x="105" y="306" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#1D4ED8;strokeWidth=3;fontSize=10;fontFamily=Courier New;" value="ahb_driver.drive_transfer()&#xa;T1  HSEL HADDR HWRITE HTRANS=NONSEQ&#xa;T2  HTRANS=IDLE  HWDATA  &lt;- 1 CYCLE SONRA&#xa;item_done()" vertex="1">
+          <mxGeometry height="78" width="272" x="105" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="ch" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#059669;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#065F46;" value="KONTROL  (yukari)" vertex="1">
+          <mxGeometry height="34" width="280" x="650" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#059669;fontSize=10;fontFamily=Courier New;" value="ahb_scoreboard.write(t)&#xa;ref_mem karsilastir -&gt; PASS/FAIL&#xa;+ ahb_coverage.write(t) -&gt; sample()" vertex="1">
+          <mxGeometry height="62" width="274" x="653" y="138" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#059669;fontSize=11;fontFamily=Courier New;" value="ap.write(item)&#xa;broadcast, non-blocking" vertex="1">
+          <mxGeometry height="44" width="274" x="653" y="232" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BFDBFE;strokeColor=#1D4ED8;strokeWidth=3;fontSize=10;fontFamily=Courier New;" value="ahb_monitor.run_phase&#xa;T1  pending AC   (addr yakala)&#xa;T2  pending KAPAT (data doldur) -&gt; yayinla" vertex="1">
+          <mxGeometry height="66" width="274" x="653" y="306" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;fontSize=11;fontFamily=Courier New;" value="mon_cb ornekleme&#xa;pasif — surme YOK" vertex="1">
+          <mxGeometry height="44" width="274" x="653" y="402" as="geometry" />
+        </mxCell>
+        <mxCell id="ifb" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=2;fontSize=11;fontStyle=1;fontColor=#5B21B6;fontFamily=Courier New;" value="interface ahb_if      +      SVA (a_addr_align / a_ctrl_stable / a_no_x / a_wdata_no_x / a_htrans_legal)" vertex="1">
+          <mxGeometry height="48" width="822" x="105" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="dtb" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D1D5DB;strokeColor=#374151;strokeWidth=3;fontSize=12;fontStyle=1;fontFamily=Courier New;" value="DUT — ahb_lite_slave     (addr_d / wr_en_d = pipeline register)" vertex="1">
+          <mxGeometry height="52" width="822" x="105" y="572" as="geometry" />
+        </mxCell>
+        <mxCell id="a0" edge="1" parent="1" source="s1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#D97706;strokeWidth=3;endArrow=block;" target="s2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="1" source="s2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#D97706;strokeWidth=3;endArrow=block;" target="s3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="s3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#D97706;strokeWidth=3;endArrow=block;" target="s4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="s4" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#D97706;strokeWidth=3;endArrow=block;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.22;entryY=0;entryDx=0;entryDy=0;" target="ifb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" edge="1" parent="1" source="ifb" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#374151;strokeWidth=3;endArrow=block;exitX=0.22;exitY=1;exitDx=0;exitDy=0;entryX=0.22;entryY=0;entryDx=0;entryDy=0;" target="dtb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" edge="1" parent="1" source="dtb" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#059669;strokeWidth=3;endArrow=block;exitX=0.78;exitY=0;exitDx=0;exitDy=0;entryX=0.78;entryY=1;entryDx=0;entryDy=0;" target="ifb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" edge="1" parent="1" source="ifb" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#059669;strokeWidth=3;endArrow=block;exitX=0.78;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" edge="1" parent="1" source="c4" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#059669;strokeWidth=3;endArrow=block;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b4" edge="1" parent="1" source="c3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#059669;strokeWidth=3;endArrow=block;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b5" edge="1" parent="1" source="c2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#059669;strokeWidth=3;endArrow=block;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9CA3AF;dashed=1;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="230" width="400" x="100" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="wrl" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=left;fontColor=#374151;" value="WRITE senaryosu" vertex="1">
+          <mxGeometry height="20" width="200" x="120" y="666" as="geometry" />
+        </mxCell>
+        <mxCell id="wrt" parent="1" style="text;html=1;fontSize=9;align=left;fontColor=#4B5563;fontFamily=Courier New;" value=" 1  test        seq.start(env.agent.sqr)&#xa; 2  sequence    start_item(req)&#xa; 3  driver      get_next_item(req)&#xa; 4  T1          HSEL=1 HADDR=A HWRITE=1 NONSEQ&#xa; 5  monitor     T1 de pending ACAR&#xa; 6  T2          HTRANS=IDLE  HWDATA=D&#xa; 7  DUT         wr_en_d=1 -&gt; mem[addr_d[5:2]]&lt;=D&#xa; 8  monitor     T2 de KAPATIR -&gt; ap.write()&#xa; 9  scoreboard  ref_mem[A] = D&#xa;10  driver      item_done()" vertex="1">
+          <mxGeometry height="190" width="410" x="120" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="rd" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9CA3AF;dashed=1;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="230" width="400" x="530" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="rdl" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=left;fontColor=#374151;" value="READ senaryosu" vertex="1">
+          <mxGeometry height="20" width="200" x="544" y="666" as="geometry" />
+        </mxCell>
+        <mxCell id="rdt" parent="1" style="text;html=1;fontSize=9;align=left;fontColor=#4B5563;fontFamily=Courier New;" value=" 1  test        seq.start(env.agent.sqr)&#xa; 2  sequence    start_item(req)&#xa; 3  driver      get_next_item(req)&#xa; 4  T1          HSEL=1 HADDR=A HWRITE=0 NONSEQ&#xa; 5  monitor     T1 de pending ACAR&#xa; 6  T2          HTRANS=IDLE&#xa; 7  DUT         HRDATA = mem[addr_d[5:2]]&#xa; 8  monitor     T2 de KAPATIR -&gt; ap.write()&#xa; 9  scoreboard  ref_mem[A] ile karsilastir -&gt; PASS/FAIL&#xa;10  driver      req.rdata = HRDATA ; item_done()" vertex="1">
+          <mxGeometry height="190" width="356" x="544" y="690" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pgC" name="3-AHB Pipeline">
+    <mxGraphModel dx="1417" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1250" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="text;html=1;fontSize=22;fontStyle=1;align=center;verticalAlign=middle;fontColor=#1F2937;" value="AHB Pipeline — Address / Data Phase Overlap" vertex="1">
+          <mxGeometry height="34" width="660" x="260" y="15" as="geometry" />
+        </mxCell>
+        <mxCell id="ts" parent="1" style="text;html=1;fontSize=12;align=center;fontColor=#DC2626;fontStyle=1;" value="Ayni fikir UC yerde birden:   DUT ta addr_d   |   monitor de pending   |   SVA da |=&gt;" vertex="1">
+          <mxGeometry height="20" width="780" x="200" y="48" as="geometry" />
+        </mxCell>
+        <mxCell id="cy0" parent="1" style="text;html=1;fontSize=13;fontStyle=1;align=center;fontColor=#6B7280;" value="T1" vertex="1">
+          <mxGeometry height="18" width="160" x="240" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="cy1" parent="1" style="text;html=1;fontSize=13;fontStyle=1;align=center;fontColor=#6B7280;" value="T2" vertex="1">
+          <mxGeometry height="18" width="160" x="400" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="cy2" parent="1" style="text;html=1;fontSize=13;fontStyle=1;align=center;fontColor=#6B7280;" value="T3" vertex="1">
+          <mxGeometry height="18" width="160" x="560" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="cy3" parent="1" style="text;html=1;fontSize=13;fontStyle=1;align=center;fontColor=#6B7280;" value="T4" vertex="1">
+          <mxGeometry height="18" width="160" x="720" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="lclk" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=right;fontFamily=Courier New;" value="HCLK" vertex="1">
+          <mxGeometry height="26" width="140" x="90" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="clkw" edge="1" parent="1" style="html=1;endArrow=none;strokeColor=#111827;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="122" />
+              <mxPoint x="320" y="122" />
+              <mxPoint x="320" y="142" />
+              <mxPoint x="400" y="142" />
+              <mxPoint x="400" y="122" />
+              <mxPoint x="480" y="122" />
+              <mxPoint x="480" y="142" />
+              <mxPoint x="560" y="142" />
+              <mxPoint x="560" y="122" />
+              <mxPoint x="640" y="122" />
+              <mxPoint x="640" y="142" />
+              <mxPoint x="720" y="142" />
+              <mxPoint x="720" y="122" />
+              <mxPoint x="800" y="122" />
+              <mxPoint x="800" y="142" />
+              <mxPoint x="880" y="142" />
+            </Array>
+            <mxPoint x="240" y="142" as="sourcePoint" />
+            <mxPoint x="880" y="142" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="g0" edge="1" parent="1" style="html=1;endArrow=none;dashed=1;strokeColor=#D1D5DB;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="112" as="sourcePoint" />
+            <mxPoint x="240" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="g1" edge="1" parent="1" style="html=1;endArrow=none;dashed=1;strokeColor=#D1D5DB;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="112" as="sourcePoint" />
+            <mxPoint x="400" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="g2" edge="1" parent="1" style="html=1;endArrow=none;dashed=1;strokeColor=#D1D5DB;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="112" as="sourcePoint" />
+            <mxPoint x="560" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="g3" edge="1" parent="1" style="html=1;endArrow=none;dashed=1;strokeColor=#D1D5DB;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="720" y="112" as="sourcePoint" />
+            <mxPoint x="720" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="g4" edge="1" parent="1" style="html=1;endArrow=none;dashed=1;strokeColor=#D1D5DB;strokeWidth=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="880" y="112" as="sourcePoint" />
+            <mxPoint x="880" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lht" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=right;fontFamily=Courier New;" value="HTRANS" vertex="1">
+          <mxGeometry height="26" width="140" x="90" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="lhtc0" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;fontSize=11;fontStyle=1;strokeWidth=1;fontFamily=Courier New;" value="NONSEQ" vertex="1">
+          <mxGeometry height="26" width="160" x="240" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="lhtc1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;fontSize=11;fontStyle=1;strokeWidth=1;fontFamily=Courier New;" value="NONSEQ" vertex="1">
+          <mxGeometry height="26" width="160" x="400" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="lhtc2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#9CA3AF;fontSize=11;fontStyle=1;strokeWidth=1;fontFamily=Courier New;" value="IDLE" vertex="1">
+          <mxGeometry height="26" width="320" x="560" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="lha" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=right;fontFamily=Courier New;" value="HADDR" vertex="1">
+          <mxGeometry height="26" width="140" x="90" y="222" as="geometry" />
+        </mxCell>
+        <mxCell id="lhac0" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;fontSize=11;fontStyle=1;strokeWidth=1;fontFamily=Courier New;" value="A1" vertex="1">
+          <mxGeometry height="26" width="160" x="240" y="222" as="geometry" />
+        </mxCell>
+        <mxCell id="lhac1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;fontSize=11;fontStyle=1;strokeWidth=1;fontFamily=Courier New;" value="A2" vertex="1">
+          <mxGeometry height="26" width="160" x="400" y="222" as="geometry" />
+        </mxCell>
+        <mxCell id="lhac2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#9CA3AF;fontSize=11;strokeWidth=1;fontFamily=Courier New;" value="-" vertex="1">
+          <mxGeometry height="26" width="320" x="560" y="222" as="geometry" />
+        </mxCell>
+        <mxCell id="lad" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=right;fontFamily=Courier New;" value="addr_d" vertex="1">
+          <mxGeometry height="26" width="140" x="90" y="269" as="geometry" />
+        </mxCell>
+        <mxCell id="ladc0" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#9CA3AF;fontSize=11;strokeWidth=1;fontFamily=Courier New;" value="-" vertex="1">
+          <mxGeometry height="26" width="160" x="240" y="269" as="geometry" />
+        </mxCell>
+        <mxCell id="ladc1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C7D2FE;strokeColor=#4338CA;fontSize=11;fontStyle=1;strokeWidth=1;fontFamily=Courier New;" value="A1" vertex="1">
+          <mxGeometry height="26" width="160" x="400" y="269" as="geometry" />
+        </mxCell>
+        <mxCell id="ladc2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C7D2FE;strokeColor=#4338CA;fontSize=11;fontStyle=1;strokeWidth=1;fontFamily=Courier New;" value="A2" vertex="1">
+          <mxGeometry height="26" width="320" x="560" y="269" as="geometry" />
+        </mxCell>
+        <mxCell id="lhw" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=right;fontFamily=Courier New;" value="HWRITE" vertex="1">
+          <mxGeometry height="26" width="140" x="90" y="316" as="geometry" />
+        </mxCell>
+        <mxCell id="lhwc0" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6B7280;fontSize=11;fontStyle=1;strokeWidth=1;fontFamily=Courier New;" value="1  write" vertex="1">
+          <mxGeometry height="26" width="160" x="240" y="316" as="geometry" />
+        </mxCell>
+        <mxCell id="lhwc1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6B7280;fontSize=11;fontStyle=1;strokeWidth=1;fontFamily=Courier New;" value="0  read" vertex="1">
+          <mxGeometry height="26" width="160" x="400" y="316" as="geometry" />
+        </mxCell>
+        <mxCell id="lhwc2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#9CA3AF;fontSize=11;strokeWidth=1;fontFamily=Courier New;" value="-" vertex="1">
+          <mxGeometry height="26" width="320" x="560" y="316" as="geometry" />
+        </mxCell>
+        <mxCell id="lhd" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=right;fontFamily=Courier New;" value="HWDATA" vertex="1">
+          <mxGeometry height="26" width="140" x="90" y="363" as="geometry" />
+        </mxCell>
+        <mxCell id="lhdc0" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#9CA3AF;fontSize=11;strokeWidth=1;fontFamily=Courier New;" value="-" vertex="1">
+          <mxGeometry height="26" width="160" x="240" y="363" as="geometry" />
+        </mxCell>
+        <mxCell id="lhdc1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontSize=11;fontStyle=1;strokeWidth=3;fontFamily=Courier New;" value="D1" vertex="1">
+          <mxGeometry height="26" width="160" x="400" y="363" as="geometry" />
+        </mxCell>
+        <mxCell id="lhdc2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#9CA3AF;fontSize=11;strokeWidth=1;fontFamily=Courier New;" value="-" vertex="1">
+          <mxGeometry height="26" width="320" x="560" y="363" as="geometry" />
+        </mxCell>
+        <mxCell id="lhr" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=right;fontFamily=Courier New;" value="HRDATA" vertex="1">
+          <mxGeometry height="26" width="140" x="90" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="lhrc0" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#9CA3AF;fontSize=11;strokeWidth=1;fontFamily=Courier New;" value="-" vertex="1">
+          <mxGeometry height="26" width="320" x="240" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="lhrc1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#059669;fontSize=11;fontStyle=1;strokeWidth=3;fontFamily=Courier New;" value="D2 = mem[A2]" vertex="1">
+          <mxGeometry height="26" width="160" x="560" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="lhrc2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3F4F6;strokeColor=#9CA3AF;fontSize=11;strokeWidth=1;fontFamily=Courier New;" value="-" vertex="1">
+          <mxGeometry height="26" width="160" x="720" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="lhy" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=right;fontFamily=Courier New;" value="HREADY" vertex="1">
+          <mxGeometry height="26" width="140" x="90" y="457" as="geometry" />
+        </mxCell>
+        <mxCell id="hy" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6B7280;fontSize=10;fontFamily=Courier New;" value="1   (wait state YOK — DUT ta HREADYOUT sabit 1)" vertex="1">
+          <mxGeometry height="26" width="640" x="240" y="457" as="geometry" />
+        </mxCell>
+        <mxCell id="ap1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;fontSize=9;" value="ADDRESS PHASE (A1)" vertex="1">
+          <mxGeometry height="22" width="160" x="240" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="dp1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontSize=9;" value="DATA PHASE (D1)" vertex="1">
+          <mxGeometry height="22" width="160" x="400" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="ap2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;fontSize=9;" value="ADDRESS PHASE (A2)" vertex="1">
+          <mxGeometry height="22" width="160" x="400" y="526" as="geometry" />
+        </mxCell>
+        <mxCell id="dp2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#059669;fontSize=9;" value="DATA PHASE (D2)" vertex="1">
+          <mxGeometry height="22" width="160" x="560" y="526" as="geometry" />
+        </mxCell>
+        <mxCell id="ovl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#92400E;" value="OVERLAP&#xa;A2 adresi ile D1 verisi&#xa;AYNI cycle da" vertex="1">
+          <mxGeometry height="48" width="200" x="905" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="sh1" edge="1" parent="1" style="html=1;strokeColor=#DC2626;strokeWidth=3;endArrow=classic;dashed=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="250" as="sourcePoint" />
+            <mxPoint x="480" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sh1l" parent="1" style="text;html=1;fontSize=10;fontStyle=1;align=left;fontColor=#DC2626;" value="HADDR -&gt; HWDATA&#xa;1 cycle" vertex="1">
+          <mxGeometry height="28" width="130" x="330" y="285" as="geometry" />
+        </mxCell>
+        <mxCell id="sh2" edge="1" parent="1" style="html=1;strokeColor=#4338CA;strokeWidth=3;endArrow=classic;dashed=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="248" as="sourcePoint" />
+            <mxPoint x="480" y="266" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sh2l" parent="1" style="text;html=1;fontSize=9;fontStyle=1;align=left;fontColor=#4338CA;" value="HADDR -&gt; addr_d  1 cycle" vertex="1">
+          <mxGeometry height="16" width="170" x="500" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="cd" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F2937;strokeColor=#111827;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="300" width="350" x="60" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="cdl" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=left;fontColor=#F9FAFB;" value="1)  DUT — addr_d" vertex="1">
+          <mxGeometry height="20" width="300" x="74" y="592" as="geometry" />
+        </mxCell>
+        <mxCell id="cdt" parent="1" style="text;html=1;fontSize=9;align=left;fontColor=#A7F3D0;fontFamily=Courier New;" value="always_ff @(posedge HCLK&#xa;           or negedge HRESETn)&#xa;  if (!HRESETn) begin&#xa;    addr_d  &lt;= &#39;0;&#xa;    wr_en_d &lt;= 1&#39;b0;&#xa;  end&#xa;  else if (HREADY) begin&#xa;    if (HSEL &amp;&amp; HTRANS[1]) begin&#xa;      addr_d  &lt;= HADDR;&#xa;      wr_en_d &lt;= HWRITE;&#xa;    end&#xa;    else wr_en_d &lt;= 1&#39;b0;&#xa;  end&#xa;&#xa;always_ff @(posedge HCLK)&#xa;  if (wr_en_d)&#xa;    mem[addr_d[5:2]] &lt;= HWDATA;&#xa;&#xa;assign HRDATA =&#xa;       mem[addr_d[5:2]];" vertex="1">
+          <mxGeometry height="262" width="330" x="74" y="616" as="geometry" />
+        </mxCell>
+        <mxCell id="cm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F2937;strokeColor=#111827;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="300" width="375" x="425" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="cml" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=left;fontColor=#F9FAFB;" value="2)  Monitor — pending" vertex="1">
+          <mxGeometry height="20" width="320" x="439" y="592" as="geometry" />
+        </mxCell>
+        <mxCell id="cmt" parent="1" style="text;html=1;fontSize=9;align=left;fontColor=#A7F3D0;fontFamily=Courier New;" value="@(vif.mon_cb);&#xa;if (vif.mon_cb.HREADY) begin&#xa;&#xa;  // 1) ONCE KAPAT&#xa;  if (pending != null) begin&#xa;    if (pending.write)&#xa;      pending.wdata = mon_cb.HWDATA;&#xa;    else&#xa;      pending.rdata = mon_cb.HRDATA;&#xa;    ap.write(pending);&#xa;    pending = null;&#xa;  end&#xa;&#xa;  // 2) SONRA AC&#xa;  if (mon_cb.HSEL &amp;&amp; mon_cb.HTRANS[1])&#xa;  begin&#xa;    pending = create(...);&#xa;    pending.addr  = mon_cb.HADDR;&#xa;    pending.write = mon_cb.HWRITE;&#xa;  end&#xa;end" vertex="1">
+          <mxGeometry height="262" width="355" x="439" y="616" as="geometry" />
+        </mxCell>
+        <mxCell id="cs" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F2937;strokeColor=#111827;verticalAlign=top;" value="" vertex="1">
+          <mxGeometry height="300" width="350" x="815" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="csl" parent="1" style="text;html=1;fontSize=12;fontStyle=1;align=left;fontColor=#F9FAFB;" value="3)  SVA — |=&gt;" vertex="1">
+          <mxGeometry height="20" width="300" x="829" y="592" as="geometry" />
+        </mxCell>
+        <mxCell id="cst" parent="1" style="text;html=1;fontSize=9;align=left;fontColor=#A7F3D0;fontFamily=Courier New;" value="// |-&gt;  OVERLAPPING&#xa;//      sonuc AYNI cycle&#xa;property p_addr_align;&#xa;  (HSEL &amp;&amp; HTRANS[1] &amp;&amp; HREADY)&#xa;  |-&gt;&#xa;  ((HSIZE==3&#39;b010) -&gt;&#xa;     (HADDR[1:0]==2&#39;b00));&#xa;endproperty&#xa;&#xa;&#xa;// |=&gt;  NON-OVERLAPPING&#xa;//      sonuc BIR SONRAKI cycle&#xa;//      (write data pipeline!)&#xa;property p_wdata_no_x;&#xa;  (HSEL &amp;&amp; HTRANS[1] &amp;&amp;&#xa;   HREADY &amp;&amp; HWRITE)&#xa;  |=&gt;&#xa;  !$isunknown(HWDATA);&#xa;endproperty" vertex="1">
+          <mxGeometry height="262" width="330" x="829" y="616" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
