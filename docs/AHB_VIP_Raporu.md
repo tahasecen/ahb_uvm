@@ -171,63 +171,7 @@ seed=99999 -> WRITE=22 READ=18 PASS=5  FAIL=0 SKIP=13
 
 ---
 
-## 5. Coverage Sonuçları
-
-Tüm testler birleştirilerek (UCDB merge) alınan özet. Kod coverage yalnızca DUT
-için ölçülmüştür (UVM kütüphanesi enstrümante edilmedi).
-
-> Aşağıdaki tablolar yerel Questa 2025.2'de UCDB merge ile alınmıştır;
-> EDA Playground'da tekrar üretilemez.
-
-```
-    Enabled Coverage              Bins      Hits    Misses    Weight  Coverage
-    ----------------              ----      ----    ------    ------  --------
-    Assertions                       5         4         1         1    80.00%
-    Branches                         7         6         1         1    85.71%
-    Conditions                       2         1         1         1    50.00%
-    Covergroups                      1        na        na         1   100.00%
-        Covergroup Bins             15        15         0         1   100.00%
-    Directives                       4         3         1         1    75.00%
-    Statements                       9         9         0         1   100.00%
-Total coverage (filtered view): 81.78%
-```
-
-Cover directive detayı:
-
-```
-c_write_txn   76  Covered
-c_read_txn    65  Covered
-c_b2b_txn      0  ZERO
-c_idle_gap   141  Covered
-```
-
-`ahb_regression_test` sonrası functional coverage (covergroup) = **%100.00**.
-
-### 5.1 Eksiklerin sebebi (tek bir kök neden)
-
-Üç ayrı metrikteki eksik, **aynı** bilinçli kapsam sınırlamasından kaynaklanır —
-DUT'ta wait state yok ve driver pipelined değil:
-
-| Metrik | Eksik | Sebep |
-|---|---|---|
-| Assertions 4/5 | `a_ctrl_stable` tetiklenmedi | Önkoşulu `!HREADY`; HREADY hep 1 → vacuous |
-| Branches 6/7 | 1 branch çalışmadı | DUT'un HREADY=0 (wait state) dalı hiç uyarılmadı |
-| Directives 3/4 | `c_b2b_txn` = 0 | Driver non-pipelined; transfer'ler arasında idle var |
-
-Bunlar hata değil, kapsam kararının doğal ve **tutarlı** sonucudur. Wait state ve
-pipelined driver eklenirse üçü de canlanır.
-
-### 5.2 Code coverage vs functional coverage
-
-DUT statement coverage **%100** olmasına rağmen `c_b2b_txn = 0`'dır: yani DUT'un
-her satırı çalıştı ama "back-to-back" senaryosu **hiç test edilmedi**. Bu, %100
-code coverage'ın tek başına yeterli olmadığını gösterir — code coverage "nereye
-dokunmadık", functional coverage "hangi senaryoyu denemedik" sorularını yanıtlar;
-ikisi birbirini tamamlar.
-
----
-
-## 6. Karşılaşılan Zorluklar ve Çözümler
+## 5. Karşılaşılan Zorluklar ve Çözümler
 
 1. **AHB pipeline (veri, adresten bir cycle sonra).** HWDATA'nın adresin bir
    cycle sonrasında gelmesi; adresi saklamadan yazmak yanlış adrese yazmaya yol
@@ -253,13 +197,13 @@ ikisi birbirini tamamlar.
 
 ---
 
-## 7. Doğrulama Kanıtı
+## 6. Doğrulama Kanıtı
 
 Doğrulama altyapısına körlemesine güvenilmedi; sessizliğin "kural sağlanıyor" mı
 "checker ölü" mü olduğunu ayırmak için bir negatif test (kodda) ve iki manuel
 bozma deneyi yapıldı.
 
-### 7.1 Scoreboard gerçekten kontrol ediyor mu? (bozuk-DUT)
+### 6.1 Scoreboard gerçekten kontrol ediyor mu? (bozuk-DUT)
 
 > **Not:** Bu deney geçici bir değişiklikle yapılmış, değişiklik geri
 > alınmıştır; repoda kod karşılığı yoktur.
@@ -273,7 +217,7 @@ UVM_ERROR [SB] SCOREBOARD FAILED with 1 mismatch(es)
 UVM_ERROR :    2
 ```
 
-### 7.2 Monitor sıra mantığı önemli mi? (bloklar ters)
+### 6.2 Monitor sıra mantığı önemli mi? (bloklar ters)
 
 > **Not:** Bu deney geçici bir değişiklikle yapılmış, değişiklik geri
 > alınmıştır; repoda kod karşılığı yoktur.
@@ -290,7 +234,7 @@ UVM_ERROR :    2
 
 Write verisi bir transfer kaymış olarak yakalandı → data bozulması.
 
-### 7.3 Assertion gerçekten ateşliyor mu? (bilerek hizasız adres)
+### 6.3 Assertion gerçekten ateşliyor mu? (bilerek hizasız adres)
 
 `ahb_align_error_test`, `addr=0x11 size=word` (hizasız) sürer; ayrı koşulur ve
 FAIL etmesi beklenir:
@@ -306,7 +250,7 @@ yakaladığı görülmelidir.
 
 ---
 
-## 8. Kapsam Dışı ve Gelecek Çalışmalar
+## 7. Kapsam Dışı ve Gelecek Çalışmalar
 
 Aşağıdakiler bu projede **bilinçli olarak yapılmadı**:
 
@@ -323,13 +267,14 @@ Aşağıdakiler bu projede **bilinçli olarak yapılmadı**:
 
 ---
 
-## 9. Referanslar
+## 8. Referanslar
 
 - ARM, *AMBA 3 AHB-Lite Protocol Specification*, ARM IHI 0033.
 - Accellera, *Universal Verification Methodology (UVM) 1.2 User's Guide / Class
   Reference*.
 - IEEE Std 1800-2012, *SystemVerilog — Unified Hardware Design, Specification, and
   Verification Language*.
+- [uvmegitimi.com](https://uvmegitimi.com/uvm-generator/)
 
 > Not: DUT (`ahb_lite_slave.sv`) bu proje kapsamında eğitim amaçlı sıfırdan
 > yazılmıştır; harici bir açık kaynak RTL kullanılmamıştır.
