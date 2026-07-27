@@ -190,10 +190,6 @@ seed=99999 -> WRITE=22 READ=18 PASS=5  FAIL=0 SKIP=13
    görülür. İki durum da "sıra kritik"i kanıtlar, ama başarısızlık farklı
    biçimde görünür.
 
-4. **Questa DPI / gcc linkleme (yerel ortam).** Yeni OS (glibc 2.39) ile
-   Questa'nın paketlediği eski gcc-10.3 linker'ı DPI linklerken çakıştı
-   (`.relr.dyn`). Çözüm: `vsim -cpppath /usr/bin/gcc` ile sistem gcc'sine
-   yönlendirme. Bu sadece yerel koşum içindir; EDA Playground'da gerekmez.
 
 ---
 
